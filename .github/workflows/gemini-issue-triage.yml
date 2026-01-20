@@ -1,0 +1,42 @@
+name: Gemini CLI Issue Triage
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    if: contains(github.event.comment.body, '@gemini-cli')
+
+    steps:
+      - name: Run Gemini CLI
+        uses: google-github-actions/run-gemini-cli@v0.1.19
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: |
+            You are an AI assistant for a NestJS project.
+
+            Issue Title: ${{ github.event.issue.title }}
+            Issue Description: ${{ github.event.issue.body }}
+            User Comment: ${{ github.event.comment.body }}
+
+            The user has mentioned @gemini-cli with a request. Analyze their comment and the issue context.
+
+            Common commands:
+            - "fix this issue" or "fix": Analyze and fix the reported bug or issue
+            - "review" or "code review": Perform a code review and suggest improvements
+            - "triage": Analyze the issue, add appropriate labels, and provide recommendations
+
+            Based on the user's request:
+            1. Analyze the relevant codebase files
+            2. Make necessary code changes or provide review feedback
+            3. Create a pull request with your changes (if fixing code)
+            4. Or add a comment with review suggestions (if reviewing)
+
+            Be thorough but concise. Focus on the specific files and areas mentioned in the issue.

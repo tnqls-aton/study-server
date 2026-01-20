@@ -58,6 +58,50 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## AI Code Assistant
+
+이 프로젝트는 Gemini CLI를 사용하여 자동으로 코드 개선을 지원합니다.
+
+### 사용 방법
+
+이슈 또는 PR에 코멘트로 `@gemini-cli`를 멘션하여 AI 어시스턴트를 호출하세요.
+
+**기본 명령어**:
+- `@gemini-cli fix this issue` - 이슈 분석 및 버그 수정
+- `@gemini-cli review` - 코드 리뷰 수행
+- `@gemini-cli triage` - 이슈 분석 및 라벨 추천
+
+### 설정
+
+1. GitHub 저장소 Settings → Secrets and variables → Actions
+2. `GEMINI_API_KEY` 추가
+3. [Google AI Studio](https://aistudio.google.com/apikey)에서 API 키 발급
+
+### 사용 예시
+
+**버그 수정**:
+1. 이슈 생성:
+   ```
+   Title: WebSocket connection leak
+   Body: Connections are not properly closed when users disconnect from the chat
+   ```
+2. 이슈에 코멘트: `@gemini-cli fix this issue`
+3. AI가 분석하고 PR 생성
+
+**코드 리뷰**:
+1. 이슈 생성:
+   ```
+   Title: Review chat module error handling
+   Body: Please review error handling in src/module/chat/
+   ```
+2. 이슈에 코멘트: `@gemini-cli review`
+3. AI가 코드 리뷰 및 개선 제안
+
+**이슈 트리아지**:
+1. 이슈 생성 후
+2. 코멘트: `@gemini-cli triage`
+3. AI가 적절한 라벨 추천 및 우선순위 제안
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
