@@ -135,7 +135,7 @@ To enable the AI Code Assistant in your repository:
 ### Features
 
 - **Free to use**: Gemini API provides 60 requests/minute and 1,000 requests/day at no cost
-- **Context-aware**: Uses Gemini 2.5 Pro with 1M token context window
+- **Context-aware**: Uses Gemini 2.0 Flash with 1M token context window
 - **Safe**: All changes are submitted as pull requests for review
 - **Flexible**: Supports code review, bug fixes, and documentation improvements
 
